@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Apr  5 18:08:41 2020
+
+@author: shakul
+"""
+
+import random, math
+N = 20; position = 0
+weight = [math.sin(k) + 1.5 for k in range(N)]
+pos_list = []
+for iter in range(1000000):
+    Upsilon = random.uniform(0.0, 1.0)
+    if Upsilon < 1: 
+        new_position = (position + 1) % N
+        if random.uniform(0.0, 1.0) < weight[position] / weight[new_position]: 
+            position = new_position
+    pos_list.append(position)
+
+    
+pylab.hist(pos_list, bins=100, normed=False)
